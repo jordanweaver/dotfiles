@@ -1,0 +1,4 @@
+[Logger]
+stream_level = 20
+file_level = 10
+

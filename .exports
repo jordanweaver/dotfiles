@@ -1,0 +1,14 @@
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# History
+export HISTSIZE=4096;
+export HISTFILESIZE=16384;
+export SAVEHIST=4096
+
+# Set Terminal Defaults
+export EDITOR="/Applications/Sublime\ Text.app/Contents/MacOS/Sublime\ Text"
+export GIT_GUI="stree"
+
+# Specify your Homebrew defaults in this environment variable
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"

@@ -1,0 +1,51 @@
+[user]
+	name = Jordan Weaver
+	email = jweaver@enthought.com
+
+[github]
+    user = jordanweaver
+
+[credential]
+	helper = osxkeychain
+
+[core]
+	editor = subl -w
+	excludesfile = /Users/jweaver/.gitignore_global
+
+[color]
+	ui = true
+
+[push]
+	default = simple
+
+[fetch]
+    prune = true
+
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
+
+[help]
+	autocorrect = 30
+
+[alias]
+  st = status
+  ci = commit
+  br = branch
+  co = checkout
+  df = diff
+  lg = log -p
+  last = log -1 HEAD
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  prune-merged = "!git branch --merged | grep  -v '\\*\\|master' | xargs -n 1 git branch -d"
+  save = !git add -A && git commit -m 'SAVEPOINT'
+  undo = reset HEAD~1 --mixed
+  amend = commit -a --amend
