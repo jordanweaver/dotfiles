@@ -1,2 +1,5 @@
+# For Canopy
+export PATH=/Users/jweaver/Library/Enthought/Canopy_64bit/User/bin:$PATH
+
 # For Homebrew
 export PATH=/usr/local/bin:$PATH
