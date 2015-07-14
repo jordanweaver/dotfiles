@@ -40,7 +40,7 @@ alias la="ls -laFh ${colorflag}"
 alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
 
 # List only dotfiles
-alias ldot="ls -ld .* ${colorflag}"
+alias ldot="ls -ld .*"
 
 # Always use color output for `ls`
 alias ls="command ls ${colorflag}"
