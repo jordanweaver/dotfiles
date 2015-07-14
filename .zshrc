@@ -47,6 +47,7 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git github python osx zsh-syntax-highlighting history-substring-search)
 
+source $ZSH/oh-my-zsh.sh
 
 ########################
 # CUSTOM STARTUP ITEMS #
