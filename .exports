@@ -12,3 +12,7 @@ export GIT_GUI="stree"
 
 # Specify your Homebrew defaults in this environment variable
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
+# Hatcher
+export HATCHER_TOKEN="eyJhbGciOiJIUzI1NiJ9.eyJpZCI6Mjc3fQ.0uukNF1bBDa5LA4X19Ol_wINZq4zyWSMN32Q7Bsmzrs"
+export HATCHER_URL=https://packages.enthought.com
