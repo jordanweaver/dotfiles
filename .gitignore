@@ -2,6 +2,7 @@
 # IPython Security #
 ####################
 .ipython/profile_default/security/*
+.ipython/profile_default/db/
 .ipython/cython/
 
 oh-my-zsh/
