@@ -6,3 +6,6 @@
 .ipython/cython/
 
 oh-my-zsh/
+
+# Ignored credentials file to be sourced as needed
+.creds
