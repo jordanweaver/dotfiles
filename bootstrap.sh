@@ -56,6 +56,3 @@ install_zsh
 # Install my powerlevel9k fork into zsh custom themes
 cd ~/.oh-my-zsh/custom
 git clone git@github.com:jordanweaver/powerlevel9k.git themes/powerlevel9k
-
-# Copy Sublime Text 3 settings into place
-cp -v $DOTFILES_DIR/init/subl-packages ~/Library/Application\ Support/Sublime\ Text\ 3/Packages

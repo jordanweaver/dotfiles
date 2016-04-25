@@ -28,10 +28,3 @@ for file in $files; do
     echo "Creating symlink to .$file in home directory."
     ln -sfv $DOTFILES_DIR/.$file ~/.$file
 done
-
-###############################
-###  CREATE EXTRA SYMLINKS  ###
-###############################
-
-# http://www.sublimetext.com/docs/3/osx_command_line.html
-[ -f ~/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl ] && ln -sfv ~/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl "$/usr/local/bin/subl"
