@@ -33,24 +33,24 @@
 	autocorrect = 30
 
 [alias]
-  st = status -s
-  ci = commit
-  br = branch
-  co = checkout
-  df = diff
-  la = "!git config -l | grep alias | cut -c 7-"
-  ls = log --pretty=format:"%C(yellow)%h%Cred%d %Creset%s%Cblue [%cn]" --decorate
-  ll = log --pretty=format:"%C(yellow)%h%Cred%d %Creset%s%Cblue [%cn]" --decorate --numstat
-  ld = log --pretty=format:"%C(yellow)%h %ad%Cred%d %Creset%s%Cblue [%cn]" --decorate --date=relative
-  lds = log --pretty=format:"%C(yellow)%h %ad%Cred%d %Creset%s%Cblue [%cn]" --decorate --date=short
-  lg = log -p
-  last = log -1 HEAD
-  prune-merged = "!git branch --merged | grep  -v '\\*\\|master' | xargs -n 1 git branch -d"
-  sl = stash list
-  sa = stash apply
-  ss = stash save
-  undo = reset HEAD~1 --mixed
-  amend = commit -a --amend
+	st = status -s
+	ci = commit
+	br = branch
+	co = checkout
+	df = diff
+	la = "!git config -l | grep alias | cut -c 7-"
+	ls = log --pretty=format:\"%C(yellow)%h%Cred%d %Creset%s%Cblue [%cn]\" --decorate
+	ll = log --pretty=format:\"%C(yellow)%h%Cred%d %Creset%s%Cblue [%cn]\" --decorate --numstat
+	ld = log --pretty=format:\"%C(yellow)%h %ad%Cred%d %Creset%s%Cblue [%cn]\" --decorate --date=relative
+	lds = log --pretty=format:\"%C(yellow)%h %ad%Cred%d %Creset%s%Cblue [%cn]\" --decorate --date=short
+	lg = log -p
+	last = log -1 HEAD
+	prune-merged = "!git branch --merged | grep  -v '\\*\\|master' | xargs -n 1 git branch -d"
+	sl = stash list
+	sa = stash apply
+	ss = stash save
+	undo = reset HEAD~1 --mixed
+	amend = commit -a --amend
 [diff]
 	tool = bc3
 [difftool]
