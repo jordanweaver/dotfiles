@@ -14,4 +14,4 @@ export GIT_GUI="stree"
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 # Source Hatcher credentials
-source .creds
+source ~/.creds

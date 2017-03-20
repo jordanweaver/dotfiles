@@ -59,7 +59,7 @@ for DOTFILE in ~/.{aliases,exports,functions,path}; do
 done
 
 # Archey Terminal Splash
-archey --color
+archey --color --offline
 
 # Z
 . ~/devo/repos/z/z.sh

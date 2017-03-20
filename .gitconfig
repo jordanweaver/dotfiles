@@ -51,7 +51,12 @@
 	ss = stash save
 	undo = reset HEAD~1 --mixed
 	amend = commit -a --amend
+	cbranch = !"git branch | grep '*' | cut -f2 -d' '"
+	changed = !"git diff --name-only $(git cbranch) $(git merge-base $(git cbranch) master)"
 [diff]
 	tool = bc3
 [difftool]
 	prompt = false
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 

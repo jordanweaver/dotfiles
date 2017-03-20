@@ -1,5 +1,2 @@
 # For Homebrew
-export PATH=/usr/local/bin:$PATH
-
-# For Jaguar
-export PATH=~/devo/enthought/jaguar/.jaguar/envs/jaguar/bin:$PATH
+# export PATH=/usr/local/bin:$PATH
