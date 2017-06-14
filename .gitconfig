@@ -45,7 +45,7 @@
 	lds = log --pretty=format:\"%C(yellow)%h %ad%Cred%d %Creset%s%Cblue [%cn]\" --decorate --date=short
 	lg = log -p
 	last = log -1 HEAD
-	prune-merged = "!git branch --merged | grep  -v '\\*\\|master' | xargs -n 1 git branch -d"
+	prunem = "!git branch --merged | grep  -v '\\*\\|master' | xargs -n 1 git branch -d"
 	sl = stash list
 	sa = stash apply
 	ss = stash save
