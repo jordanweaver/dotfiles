@@ -75,3 +75,8 @@ archey --color --offline
 
 # use bash ctrl-U behavior
 bindkey '^U' backward-kill-line
+
+# edm auto-completion
+autoload bashcompinit
+bashcompinit
+source ~/.edm-completion.bash
