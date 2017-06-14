@@ -80,3 +80,7 @@ bindkey '^U' backward-kill-line
 autoload bashcompinit
 bashcompinit
 source ~/.edm-completion.bash
+
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+
+source ~/.fonts/*.sh
