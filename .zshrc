@@ -72,3 +72,6 @@ archey --color --offline
 
 # Z
 . ~/devo/repos/z/z.sh
+
+# use bash ctrl-U behavior
+bindkey '^U' backward-kill-line
