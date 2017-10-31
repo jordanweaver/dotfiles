@@ -53,6 +53,7 @@
 	amend = commit -a --amend
 	cbranch = !"git branch | grep '*' | cut -f2 -d' '"
 	changed = !"git diff --name-only $(git cbranch) $(git merge-base $(git cbranch) master)"
+	unstage = reset --
 [diff]
 	tool = bc3
 [difftool]
@@ -60,3 +61,5 @@
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
+[commit]
+	template = /Users/jweaver/.stCommitMsg
