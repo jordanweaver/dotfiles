@@ -7,7 +7,7 @@ alias nukecanopy="rm -rf /Applications/Canopy.app /Applications/Enthought\ Canop
 alias resetcanopy="rm -rf /Applications/Enthought\ Canopy\ \(64-bit\) ~/.canopy ~/Library/Enthought ~/Documents/Canopy"
 
 # Search Enthought repo
-alias es="enpkg -s"
+alias genia='edm shell -e genia-dev'
 
 # List package dependencies, recursively
 alias depends='python -m enstaller.tools.list_dependencies'
