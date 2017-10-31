@@ -12,10 +12,14 @@ POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
 POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="» "
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(virtualenv context dir vcs)
+# POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(icons_test)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status history time)
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
 POWERLEVEL9K_SHOW_CHANGESET=true
 POWERLEVEL9K_CHANGESET_HASH_LENGTH=7
+POWERLEVEL9K_PYTHON_ICON=
+POWERLEVEL9K_VCS_GIT_GITHUB_ICON=
+POWERLEVEL9K_VCS_COMMIT_ICON=""
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -68,7 +72,7 @@ for DOTFILE in ~/.{aliases,exports,functions,path}; do
 done
 
 # Archey Terminal Splash
-archey --color --offline
+archey --color
 
 # Z
 . ~/devo/repos/z/z.sh
@@ -84,3 +88,5 @@ source ~/.edm-completion.bash
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 source ~/.fonts/*.sh
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
