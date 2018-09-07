@@ -6,19 +6,19 @@ ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="powerlevel9k/powerlevel9k"
-POWERLEVEL9K_MODE='awesome-fontconfig'
+POWERLEVEL9K_MODE='nerdfont-complete'
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
-POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="» "
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="» "
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(virtualenv context dir vcs)
 # POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(icons_test)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status history time)
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 POWERLEVEL9K_SHOW_CHANGESET=true
 POWERLEVEL9K_CHANGESET_HASH_LENGTH=7
-POWERLEVEL9K_PYTHON_ICON=
-POWERLEVEL9K_VCS_GIT_GITHUB_ICON=
+POWERLEVEL9K_PYTHON_ICON=$'\uE245'
+POWERLEVEL9K_VCS_GIT_ICON=$'\uF1D3'
 POWERLEVEL9K_VCS_COMMIT_ICON=""
 
 # Set to this to use case-sensitive completion
@@ -43,7 +43,7 @@ export UPDATE_ZSH_DAYS=14
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
-COMPLETION_WAITING_DOTS="true"
+# COMPLETION_WAITING_DOTS="true"
 
 # Uncomment following line if you want to disable marking untracked files under
 # VCS as dirty. This makes repository status check for large repositories much,
@@ -72,10 +72,10 @@ for DOTFILE in ~/.{aliases,exports,functions,path}; do
 done
 
 # Archey Terminal Splash
-archey --color
+# archey --color
 
 # Z
-. ~/devo/repos/z/z.sh
+. ~/devo/external-repos/z/z.sh
 
 # use bash ctrl-U behavior
 bindkey '^U' backward-kill-line
@@ -86,7 +86,5 @@ bashcompinit
 source ~/.edm-completion.bash
 
 export VIRTUAL_ENV_DISABLE_PROMPT=1
-
-source ~/.fonts/*.sh
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

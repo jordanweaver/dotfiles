@@ -7,7 +7,7 @@
 OLD_DOTS_DIR=~/dotfiles_old
 
 # list of files/folders to symlink in homedir
-files=("aliases bash_profile exports functions gitconfig gitignore_global ipython macos path zshrc creds")
+files=("aliases aliases_macos bash_profile exports functions gitconfig gitignore_global ipython macos path zshrc creds")
 
 ##########
 
