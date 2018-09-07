@@ -37,14 +37,21 @@
 	ci = commit
 	br = branch
 	co = checkout
+	cp = cherry-pick
 	df = diff
 	la = "!git config -l | grep alias | cut -c 7-"
 	ls = log --pretty=format:\"%C(yellow)%h%Cred%d %Creset%s%Cblue [%cn]\" --decorate
 	ll = log --pretty=format:\"%C(yellow)%h%Cred%d %Creset%s%Cblue [%cn]\" --decorate --numstat
 	ld = log --pretty=format:\"%C(yellow)%h %ad%Cred%d %Creset%s%Cblue [%cn]\" --decorate --date=relative
 	lds = log --pretty=format:\"%C(yellow)%h %ad%Cred%d %Creset%s%Cblue [%cn]\" --decorate --date=short
-	lg = log -p
+    # pretty log of current branch only.
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s - %aN - %Cgreen(%cr)' --abbrev-commit --date=relative
+    # Pretty log of all branches
+    lga = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%Creset' --abbrev-commit --date=relative --all
+    # Pretty log of all branches, but just first parent
+    lgaf = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%Creset' --abbrev-commit --date=relative --all --first-parent
 	last = log -1 HEAD
+    oops = reset 'HEAD^'
 	prunem = "!git branch --merged | grep  -v '\\*\\|master' | xargs -n 1 git branch -d"
 	sl = stash list
 	sa = stash apply
@@ -54,6 +61,7 @@
 	cbranch = !"git branch | grep '*' | cut -f2 -d' '"
 	changed = !"git diff --name-only $(git cbranch) $(git merge-base $(git cbranch) master)"
 	unstage = reset --
+	cherry = cherry-pick
 [diff]
 	tool = bc3
 [difftool]
@@ -63,3 +71,8 @@
 	path = 
 [commit]
 	template = /Users/jweaver/.stCommitMsg
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
