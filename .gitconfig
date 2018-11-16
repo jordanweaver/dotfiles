@@ -9,7 +9,7 @@
 	helper = osxkeychain
 
 [core]
-	editor = atom --wait
+	editor = code --wait
 	excludesfile = /Users/jweaver/.gitignore_global
 
 [color]
@@ -63,12 +63,9 @@
 	unstage = reset --
 	cherry = cherry-pick
 [diff]
-	tool = bc3
-[difftool]
-	prompt = false
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+    tool = default-difftool
+[difftool "default-difftool"]
+    cmd = code --wait --diff $LOCAL $REMOTE
 [commit]
 	template = /Users/jweaver/.stCommitMsg
 [filter "lfs"]
