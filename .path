@@ -1,5 +1,2 @@
 # For Homebrew
 # export PATH=/usr/local/bin:$PATH
-
-# For Genia
-export PATH=/Users/jweaver/devo/enthought/genia/repos/bwa-0.7.12:$PATH

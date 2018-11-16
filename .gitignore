@@ -9,5 +9,5 @@
 
 oh-my-zsh/
 
-# Ignored credentials file to be sourced as needed
-.creds
+# Ignored credentials and other private materials to be sourced as needed
+.private
