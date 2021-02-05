@@ -54,6 +54,7 @@ nosetests.xml
 
 # VS Code
 .vscode
+*.code-workspace
 
 ############
 # Packages #
