@@ -1,3 +1,5 @@
+ZSH_DISABLE_COMPFIX="true"
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -58,7 +60,7 @@ export UPDATE_ZSH_DAYS=14
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git github python osx zsh-syntax-highlighting history-substring-search)
+plugins=(git github python osx history-substring-search zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -72,7 +74,7 @@ for DOTFILE in ~/.{aliases,exports,functions,path}; do
 done
 
 # Archey Terminal Splash
-# archey --color
+archey --color
 
 # Z
 . ~/devo/external-repos/z/z.sh

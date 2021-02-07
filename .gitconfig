@@ -10,7 +10,7 @@
 
 [core]
 	editor = code --wait
-	excludesfile = /Users/jweaver/.gitignore_global
+	excludesfile = /Users/protojordie/.gitignore_global
 
 [color]
 	ui = true
@@ -22,7 +22,7 @@
 	prune = true
 
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 
 [filter "media"]
@@ -77,3 +77,5 @@
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
+[pull]
+	rebase = false
