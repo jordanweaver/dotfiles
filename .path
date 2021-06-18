@@ -1,2 +1,2 @@
-# For Homebrew
-# export PATH=/usr/local/bin:$PATH
+# VS Code
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"

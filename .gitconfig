@@ -52,8 +52,8 @@
     	lgaf = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%Creset' --abbrev-commit --date=relative --all --first-parent
 	last = log -1 HEAD
     	oops = reset 'HEAD^'
-	prn = "!git branch --merged | grep  -v '\\*\\|master' | xargs -n 1 git branch -d"
-	prns = "!git checkout -q master && git for-each-ref refs/heads/ '--format=%(refname:short)' | while read branch; do mergeBase=$(git merge-base master $branch) && [[ $(git cherry master $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == '-'* ]] && git branch -D $branch; done"
+	prn = "!git branch --merged | grep  -v '\\*\\|main' | xargs -n 1 git branch -d"
+	prns = "!git checkout -q main && git for-each-ref refs/heads/ '--format=%(refname:short)' | while read branch; do mergeBase=$(git merge-base main $branch) && [[ $(git cherry master $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == '-'* ]] && git branch -D $branch; done"
 	sl = stash list
 	sa = stash apply
 	ss = stash save
