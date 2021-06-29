@@ -4,12 +4,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     source ~/.aliases_macos
 fi
 
-# List package dependencies, recursively
-alias depends='python -m enstaller.tools.list_dependencies'
-
-# Shortcut for library installation
-alias py2setup="CPPFLAGS='-stdlib=libc++ -mmacosx-version-min=10.8' python setup.py build_ext develop"
-
 # Easier navigation: .., ..., ...., ....., ~ and -
 alias ..="cd .."
 alias ...="cd ../.."
@@ -91,6 +85,3 @@ alias reload="exec $SHELL -l"
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
-
-# Aliases for Python projects
-alias ci="edm run -e bootstrap -- python -m ci"

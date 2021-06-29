@@ -69,25 +69,15 @@ source $ZSH/oh-my-zsh.sh
 ########################
 
 
-for DOTFILE in ~/.{aliases,exports,functions,path}; do
+for DOTFILE in ~/.{aliases,exports,functions}; do
     [ -f "$DOTFILE" ] && . "$DOTFILE"
 done
 
-# Archey Terminal Splash
-# archey --color
-
 # Z
-. ~/devo/external-repos/z/z.sh
+. /usr/local/etc/profile.d/z.sh
 
 # use bash ctrl-U behavior
 bindkey '^U' backward-kill-line
-
-# edm auto-completion
-autoload bashcompinit
-bashcompinit
-source ~/.edm-completion.bash
-
-# export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
@@ -97,26 +87,3 @@ complete -o nospace -C /usr/local/bin/mc mc
 # Use modern completion system
 autoload -Uz compinit
 compinit
-
-# fix inconsistent VS Code command line link
-if [ ! -f /usr/local/bin/code ]; then
-ln -s /Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code /usr/local/bin/code
-fi
-
-# dvc.org stuff
-# Case insensitive match
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-
-# Group matches and describe.
-zstyle ':completion:*:*:*:*:*' menu select
-zstyle ':completion:*:matches' group 'yes'
-zstyle ':completion:*:options' description 'yes'
-zstyle ':completion:*:options' auto-description '%d'
-zstyle ':completion:*:corrections' format ' %F{green}-- %d (errors: %e) --%f'
-zstyle ':completion:*:descriptions' format ' %F{yellow}-- %d --%f'
-zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
-zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
-zstyle ':completion:*:default' list-prompt '%S%M matches%s'
-zstyle ':completion:*' format ' %F{yellow}-- %d --%f'
-zstyle ':completion:*' group-name ''
-zstyle ':completion:*' verbose yes

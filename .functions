@@ -3,16 +3,6 @@ function manpdf() {
     man -t "$1" | open -f -a /Applications/Preview.app/
 }
 
-# Perform a Dash docset search
-dash() {
-    case $# in
-        1) QUERY="$1";;
-        2) QUERY="$1:$2";;
-        *) echo "Usage: dash [docset] query"; return 1;
-    esac
-    open "dash://$QUERY"
-}
-
 # Create a new directory and enter it
 function mkd() {
     mkdir -p "$@" && cd "$_";
@@ -132,36 +122,6 @@ function getcertnames() {
     else
         echo "ERROR: Certificate not found.";
         return 1;
-    fi;
-}
-
-# `s` with no arguments opens the current directory in Sublime Text, otherwise
-# opens the given location
-function s() {
-    if [ $# -eq 0 ]; then
-        subl .;
-    else
-        subl "$@";
-    fi;
-}
-
-# `a` with no arguments opens the current directory in Atom Editor, otherwise
-# opens the given location
-function a() {
-    if [ $# -eq 0 ]; then
-        atom .;
-    else
-        atom "$@";
-    fi;
-}
-
-# `v` with no arguments opens the current directory in Vim, otherwise opens the
-# given location
-function v() {
-    if [ $# -eq 0 ]; then
-        vim .;
-    else
-        vim "$@";
     fi;
 }
 

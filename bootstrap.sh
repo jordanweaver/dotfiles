@@ -22,7 +22,7 @@ brew tap caskroom/versions
 
 # Begin Installation Scripts
 for SCRIPT in "$DOTFILES_DIR"/install/*.sh; do
-    [ -f "$SCRIPT" ] && . "$SCRIPT"
+      [ -f "$SCRIPT" ] && . "$SCRIPT"
 done
 
 install_zsh () {

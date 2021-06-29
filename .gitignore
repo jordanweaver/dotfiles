@@ -11,3 +11,6 @@ oh-my-zsh/
 
 # Ignored credentials and other private materials to be sourced as needed
 .private
+
+# JetBrains stuff
+.idea
