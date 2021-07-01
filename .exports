@@ -5,3 +5,7 @@ export SAVEHIST=4096
 
 # Set Terminal Defaults
 export GIT_GUI="stree"
+
+# Set default editor
+export VISUAL="code --wait"
+export EDITOR="$VISUAL"
