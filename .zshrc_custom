@@ -20,6 +20,7 @@ POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 POWERLEVEL9K_SHOW_CHANGESET=true
 POWERLEVEL9K_CHANGESET_HASH_LENGTH=7
 POWERLEVEL9K_PYTHON_ICON=$'\uE245'
+POWERLEVEL9K_TRANSIENT_PROMPT=always
 POWERLEVEL9K_VCS_GIT_ICON=$'\uF1D3'
 POWERLEVEL9K_VCS_COMMIT_ICON=""
 
@@ -87,3 +88,8 @@ complete -o nospace -C /usr/local/bin/mc mc
 # Use modern completion system
 autoload -Uz compinit
 compinit
+
+# fix inconsistent VS Code command line link
+if [ ! -f /usr/local/bin/code ]; then
+ln -s /Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code /usr/local/bin/code
+fi
