@@ -7,7 +7,7 @@
 OLD_DOTS_DIR=~/dotfiles_old
 
 # list of files/folders to symlink in homedir
-files=("aliases aliases_macos exports functions macos")
+files=("aliases aliases_macos exports finicky.js functions macos")
 
 ##########
 

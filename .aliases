@@ -85,3 +85,8 @@ alias reload="exec $SHELL -l"
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
+
+# Quickly edit my brag doc
+alias brag='nano ~/brag.md'
+
+alias tf='terraform'
