@@ -20,19 +20,19 @@ else # macOS `ls`
 fi
 
 # Simple replacement for ls
-alias ls="exa -F"
+alias ls="eza -F"
 
 # List all files, include size, type, human readable
-alias ll="exa -lhF --git --group-directories-first"
+alias ll="eza -lhF --git --group-directories-first"
 
 # List all files like above, including dot files
-alias la='exa -alhF --git --group-directories-first'
+alias la='eza -alhF --git --group-directories-first'
 
 # List only directories
-alias lsd="exa -lF | grep --color=never '^d'"
+alias lsd="eza -lF | grep --color=never '^d'"
 
 # List only dotfiles
-alias ldot="exa -ld .*"
+alias ldot="eza -ld .*"
 
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
@@ -77,16 +77,28 @@ for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
 	alias "$method"="lwp-request -m '$method'"
 done
 
-# Make Grunt print stack traces by default
-command -v grunt > /dev/null && alias grunt="grunt --stack"
-
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec $SHELL -l"
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
 
-# Quickly edit my brag doc
-alias brag='nano ~/brag.md'
-
 alias tf='terraform'
+
+alias co='git co'
+alias ci='git ci'
+alias cii='git cii'
+alias pull='git pull'
+alias push='git push'
+alias pushup='git pushup'
+alias rb='git rebase'
+alias st='git st'
+alias dff='git diff'
+
+alias cg="npm run codegen"
+alias sb="npm run storybook"
+alias start="npm run start"
+alias lint="npm run lint"
+alias build="npm run build"
+
+alias susu="ssh susuwatari"

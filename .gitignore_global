@@ -55,6 +55,8 @@ nosetests.xml
 # VS Code
 .vscode
 *.code-workspace
+.worktrees
+.ignore
 
 ############
 # Packages #
