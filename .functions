@@ -81,15 +81,15 @@ function gz() {
     printf "gzip: %d bytes (%2.2f%%)\n" "$gzipsize" "$ratio";
 }
 
-# Syntax-highlight JSON strings or files
-# Usage: `json '{"foo":42}'` or `echo '{"foo":42}' | json`
-function json() {
-    if [ -t 0 ]; then # argument
-        python -mjson.tool <<< "$*" | pygmentize -l javascript;
-    else # pipe
-        python -mjson.tool | pygmentize -l javascript;
-    fi;
-}
+# # Syntax-highlight JSON strings or files
+# # Usage: `json '{"foo":42}'` or `echo '{"foo":42}' | json`
+# function json() {
+#     if [ -t 0 ]; then # argument
+#         python -mjson.tool <<< "$*" | pygmentize -l javascript;
+#     else # pipe
+#         python -mjson.tool | pygmentize -l javascript;
+#     fi;
+# }
 
 # Show all the names (CNs and SANs) listed in the SSL certificate
 # for a given domain
@@ -173,21 +173,21 @@ alias e64=encode64
 alias ef64=encodefile64
 alias d64=decode64
 
-function cob() {
-    local arg="$1"
-    local branch_name
+# function cob() {
+#     local arg="$1"
+#     local branch_name
 
-    # Check if the argument is a number
-    if [[ "$arg" =~ ^[0-9]+$ ]]; then
-        branch_name="jira/jweaver/HORIZON-$arg"
-    # Check if the argument is of the form SOMETEXT-1234
-    elif [[ "$arg" =~ ^[A-Z]+-[0-9]+$ ]]; then
-        branch_name="jira/jweaver/$arg"
-    else
-        echo "Invalid argument. Please provide a plain number or a text-number combination (e.g., SOMETEXT-1234)."
-        return 1
-    fi
+#     # Check if the argument is a number
+#     if [[ "$arg" =~ ^[0-9]+$ ]]; then
+#         branch_name="jweaver/TD-$arg"
+#     # Check if the argument is of the form SOMETEXT-1234
+#     elif [[ "$arg" =~ ^[A-Z]+-[0-9]+$ ]]; then
+#         branch_name="jweaver/$arg"
+#     else
+#         echo "Invalid argument. Please provide a plain number or a text-number combination (e.g., SOMETEXT-1234)."
+#         return 1
+#     fi
 
-    # Create and checkout the new branch
-    git checkout -b "$branch_name"
-}
+#     # Create and checkout the new branch
+#     git checkout -b "$branch_name"
+# }

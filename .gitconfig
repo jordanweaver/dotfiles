@@ -1,81 +1,62 @@
 [user]
+	email = i.jordanweaver@gmail.com
 	name = Jordan Weaver
-	email = i.com
-
-[github]
-    user = jordanweaver
-
-[credential]
-	helper = osxkeychain
-
 [core]
+	excludesfile = /Users/jordan/.gitignore_global
 	editor = code --wait
-	excludesfile = /Users/protojordie/.gitignore_global
-
-[color]
-	ui = true
-
-[push]
-	default = simple
-
-[fetch]
-	prune = true
-
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
-
-[filter "media"]
-	clean = git-media-clean %f
-	smudge = git-media-smudge %f
-
-[help]
-	autocorrect = 30
-
+[difftool "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
+[mergetool "vscode"]
+	cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
 [alias]
-	st = status -s
-	ci = commit
-	br = branch
-	co = checkout
-	cp = cherry-pick
-	df = diff
+    br = branch
+    cp = cherry-pick
+    co = checkout
+    ci = commit
+	sa = stash apply
+	ss = stash save
+    sl = stash list
+    st = status
+    pushup = push -u origin
+	amend = commit -a --amend --no-edit
+	cleanup = !"git branch --merged | grep -vE 'main' | xargs -n 1 git branch -D"
 	la = "!git config -l | grep alias | cut -c 7-"
+    la = "!git config -l | grep alias | cut -c 7-"
 	ls = log --pretty=format:\"%C(yellow)%h%Cred%d %Creset%s%Cblue [%cn]\" --decorate
 	ll = log --pretty=format:\"%C(yellow)%h%Cred%d %Creset%s%Cblue [%cn]\" --decorate --numstat
 	ld = log --pretty=format:\"%C(yellow)%h %ad%Cred%d %Creset%s%Cblue [%cn]\" --decorate --date=relative
 	lds = log --pretty=format:\"%C(yellow)%h %ad%Cred%d %Creset%s%Cblue [%cn]\" --decorate --date=short
 	# pretty log of current branch only.
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s - %aN - %Cgreen(%cr)' --abbrev-commit --date=relative
-    	# Pretty log of all branches
-    	lga = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%Creset' --abbrev-commit --date=relative --all
-    	# Pretty log of all branches, but just first parent
-    	lgaf = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%Creset' --abbrev-commit --date=relative --all --first-parent
+	# Pretty log of all branches
+	lga = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%Creset' --abbrev-commit --date=relative --all
+	# Pretty log of all branches, but just first parent
+	lgaf = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%Creset' --abbrev-commit --date=relative --all --first-parent
 	last = log -1 HEAD
-    	oops = reset 'HEAD^'
-	prn = "!git branch --merged | grep  -v '\\*\\|main' | xargs -n 1 git branch -d"
-	prns = "!git checkout -q main && git for-each-ref refs/heads/ '--format=%(refname:short)' | while read branch; do mergeBase=$(git merge-base main $branch) && [[ $(git cherry master $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == '-'* ]] && git branch -D $branch; done"
-	sl = stash list
-	sa = stash apply
-	ss = stash save
-	undo = reset HEAD~1 --mixed
-	amend = commit -a --amend
-	cbranch = !"git branch | grep '*' | cut -f2 -d' '"
+	oops = reset 'HEAD^'
+    undo = reset HEAD~1 --mixed
 	changed = !"git diff --name-only $(git cbranch) $(git merge-base $(git cbranch) master)"
 	unstage = reset --
-	cherry = cherry-pick
-[diff]
-    tool = default-difftool
-[difftool "default-difftool"]
-    cmd = code --wait --diff $LOCAL $REMOTE
-[commit]
-	template = /Users/jweaver/.stCommitMsg
+    # cii = "!f() { \
+    #     count=$#; \
+    #     branch_name=$(git symbolic-ref --short HEAD); \
+    #     ticket_id=$(echo \"$branch_name\" | grep -oE '[^/]+$' | grep -oE '[A-Z]+-[0-9]+'); \
+    #     if [ -z \"$ticket_id\" ]; then \
+    #         ticket_id=''; \
+    #     fi; \
+    #     msg=\"$ticket_id: ${!count}\"; \
+    #     if [ $count -eq 1 ]; then \
+    #         git commit -m \"$msg\"; \
+    #     else \
+    #         set -- \"${@:1:$((count-1))}\"; \
+    #         git commit \"$@\" -m \"$msg\"; \
+    #     fi; \
+    # }; f"
+[init]
+	defaultBranch = main
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[pull]
-	rebase = false
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
+

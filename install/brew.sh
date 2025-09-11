@@ -9,7 +9,13 @@ brew upgrade
 
 # Brew Binary Installs
 apps=(
+    eza
+    fontconfig
+    starship
     z
+    zsh-autosuggestions
+    zsh-history-substring-search
+    zsh-syntax-highlighting
 )
 brew install "${apps[@]}"
 
@@ -18,12 +24,19 @@ brew install homebrew/cask/brew-cask
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 casks=(
     alfred
-    dash
-    dropbox
     iterm2
-    sourcetree
+    finicky
+    gifox
+    keeper-password-manager
+    rectangle
     spotify
     things
+    discord
+    visual-studio-code
+    cursor
+    font-jetbrains-mono-nerd
+    font-0xproto-nerd-font
+    karabiner-elements
 )
 brew install --cask "${casks[@]}"
 

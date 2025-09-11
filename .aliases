@@ -96,7 +96,6 @@ alias st='git st'
 alias dff='git diff'
 
 alias cg="npm run codegen"
-alias sb="npm run storybook"
 alias start="npm run start"
 alias lint="npm run lint"
 alias build="npm run build"

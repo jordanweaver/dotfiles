@@ -1,16 +1,1 @@
-####################
-# IPython Security #
-####################
-.ipython/profile_default/security/*
-.ipython/profile_default/db/*
-.ipython/profile_default/static/*
-.ipython/profile_default/ipython_*
-.ipython/cython/*
-
-oh-my-zsh/
-
-# Ignored credentials and other private materials to be sourced as needed
-.private
-
-# JetBrains stuff
-.idea
+.ignore/

@@ -7,7 +7,7 @@
 OLD_DOTS_DIR=~/dotfiles_old
 
 # list of files/folders to symlink in homedir
-files=("aliases aliases_macos exports finicky.js functions macos")
+files=("aliases aliases_macos exports finicky.js functions macos gitconfig gitignore_global")
 
 ##########
 
@@ -27,4 +27,24 @@ for file in $files; do
     mv ~/.$file $OLD_DOTS_DIR
     echo "Creating symlink to .$file in home directory."
     ln -sfv $DOTFILES_DIR/.$file ~/.$file
+done
+
+# handle .config file(s)
+CONFIG_FILES=("starship.toml")  # add paths relative to .config
+
+for cfg in "${CONFIG_FILES[@]}"; do
+    target="$HOME/.config/$cfg"
+    source="$DOTFILES_DIR/.config/$cfg"
+
+    # ensure parent directory exists
+    mkdir -p "$(dirname "$target")"
+
+    if [ -e "$target" ] || [ -L "$target" ]; then
+        echo "Backing up existing $target to $OLD_DOTS_DIR"
+        mkdir -p "$OLD_DOTS_DIR/.config/$(dirname "$cfg")"
+        mv -v "$target" "$OLD_DOTS_DIR/.config/$cfg"
+    fi
+
+    echo "Creating symlink to $cfg in ~/.config"
+    ln -sfv "$source" "$target"
 done

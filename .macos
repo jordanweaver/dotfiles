@@ -19,71 +19,17 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 ###############################################################################
 # General UI/UX                                                               #
 ###############################################################################
-
-# Set computer name (as done via System Preferences → Sharing)
-#sudo scutil --set ComputerName "ComputerName"
-#sudo scutil --set HostName "ComputerName"
-#sudo scutil --set LocalHostName "ComputerName"
-#sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "ComputerName"
-
 # Lower startup sound
-sudo nvram SystemAudioVolume=%70
-
-# Grant Full Disk Access permission
-# for app in "com.apple.iTerm2" \
-#     "/Applications/Alfred 5.app"; do
-#     sudo tccutil --service "kTCCServiceSystemPolicyAllFiles" --insert "${app}"
-#     sudo tccutil --service "kTCCServiceSystemPolicyAllFiles" --enable "${app}"
-# done
-
-# Grant Accessibility permission
-# for app in "/Applications/Alfred 4.app" \
-#     "/Applications/Bartender 4.app" \
-#     "/Library/Application Support/Logitech.localized/Logitech Options.localized/Logi Options Daemon.app" \
-#     "/Applications/Logi Options.app" \
-#     "/Applications/Magnet.app" \
-#     "/Applications/Timemator.app"; do
-#     sudo tccutil --insert "${app}"
-#     sudo tccutil --enable "${app}"
-# done
+sudo nvram SystemAudioVolume=%20
 
 # Set Use dark menu bar and Dock
 sudo defaults write /Library/Preferences/.GlobalPreferences AppleInterfaceStyle Dark
-
-# Menu bar: hide the User icon
-# https://github.com/mathiasbynens/dotfiles/issues/731#issuecomment-274596895
-# defaults -currentHost write com.apple.systemuiserver dontAutoLoad -array \
-#         "/System/Library/CoreServices/Menu Extras/User.menu" \
-#         "/System/Library/CoreServices/Menu Extras/Eject.menu" \
-#         "/System/Library/CoreServices/Menu Extras/TextInput.menu" \
-#         "/System/Library/CoreServices/Menu Extras/Displays.menu" \
-#         "/System/Library/CoreServices/Menu Extras/VPN.menu"
-# defaults write com.apple.systemuiserver menuExtras -array \
-#         "/System/Library/CoreServices/Menu Extras/TimeMachine.menu" \
-#         "/System/Library/CoreServices/Menu Extras/AirPort.menu" \
-#         "/System/Library/CoreServices/Menu Extras/Bluetooth.menu" \
-#         "/System/Library/CoreServices/Menu Extras/Volume.menu" \
-#         "/System/Library/CoreServices/Menu Extras/Battery.menu" \
-#         "/System/Library/CoreServices/Menu Extras/Clock.menu"
-
-# Set highlight color to green
-# defaults write NSGlobalDomain AppleHighlightColor -string "0.764700 0.976500 0.568600"
 
 # Set sidebar icon size to medium
 defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
 
 # Always show scrollbars
 defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
-# Possible values: `WhenScrolling`, `Automatic` and `Always`
-
-# Disable the over-the-top focus ring animation
-defaults write NSGlobalDomain NSUseAnimatedFocusRing -bool false
-
-# Adjust toolbar title rollover delay
-defaults write NSGlobalDomain NSToolbarTitleViewRolloverDelay -float 0
-
-# Increase window resize speed for Cocoa applications
-defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
 
 # Expand save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
@@ -104,6 +50,10 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 
 # Remove duplicates in the “Open With” menu (also see `lscleanup` alias)
 /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
+
+# Reveal IP address, hostname, OS version, etc. when clicking the clock
+# in the login window
+sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
 
 # Disable Resume system-wide
 defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
@@ -131,6 +81,10 @@ defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
 
 # Disable auto-correct
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+
+# Disable Siri
+defaults write com.apple.Siri StatusMenuVisible -bool false
+defaults write com.apple.assistant.support "Assistant Enabled" -bool false
 
 ##############################################################################
 # Security                                                                   #
@@ -162,10 +116,10 @@ sudo defaults write /Library/Preferences/com.apple.loginwindow SHOWFULLNAME -boo
 # sudo defaults write /Library/Preferences/com.apple.loginwindow RetriesUntilHint -int 0
 
 # Disable guest account login
-# sudo defaults write /Library/Preferences/com.apple.loginwindow GuestEnabled -bool false
+sudo defaults write /Library/Preferences/com.apple.loginwindow GuestEnabled -bool false
 
 # Enable secure virtual memory
-# sudo defaults write /Library/Preferences/com.apple.virtualMemory UseEncryptedSwap -bool true
+sudo defaults write /Library/Preferences/com.apple.virtualMemory UseEncryptedSwap -bool true
 
 # Show location icon in menu bar when System Services request your location.
 sudo defaults write /Library/Preferences/com.apple.locationmenu.plist ShowSystemServices -bool true
@@ -174,9 +128,9 @@ sudo defaults write /Library/Preferences/com.apple.locationmenu.plist ShowSystem
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
 ###############################################################################
 
-# Set mouse and scrolling speed.
-# defaults write NSGlobalDomain com.apple.mouse.scaling -int 3
-# defaults write NSGlobalDomain com.apple.scrollwheel.scaling -float 0.6875
+# Require password immediately after sleep or screen saver begins
+defaults write com.apple.screensaver askForPassword -int 1
+defaults write com.apple.screensaver askForPasswordDelay -int 0
 
 # Enable full keyboard access for all controls
 # (e.g. enable Tab in modal dialogs)
@@ -187,7 +141,7 @@ defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
 # Set a blazingly fast keyboard repeat rate
 defaults write NSGlobalDomain KeyRepeat -int 1
-defaults write NSGlobalDomain InitialKeyRepeat -int 20
+defaults write NSGlobalDomain InitialKeyRepeat -int 10
 
 # Set language and text formats
 # Note: if you’re in the US, replace `EUR` with `USD`, `Centimeters` with
@@ -197,16 +151,8 @@ defaults write NSGlobalDomain AppleLocale -string "en_US@currency=USD"
 defaults write NSGlobalDomain AppleMeasurementUnits -string "Inches"
 defaults write NSGlobalDomain AppleMetricUnits -bool false
 
-# Show language menu in the top right corner of the boot screen
-# sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true
-
-# Set the timezone; see `sudo systemsetup -listtimezones` for other values
-# sudo systemsetup -settimezone "America/New_York" > /dev/null
-# sudo systemsetup -setnetworktimeserver "time.apple.com"
-# sudo systemsetup -setusingnetworktime on
-
-# Do not set timezone automatically depending on location.
-# sudo defaults write /Library/Preferences/com.apple.timezone.auto.plist Active -bool false
+# Increase sound quality for Bluetooth headphones/headsets
+defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
 
 ###############################################################################
 # Screen                                                                      #
@@ -219,10 +165,17 @@ defaults write com.apple.screencapture location -string "${HOME}/Library/Mobile 
 defaults write com.apple.screencapture type -string "jpg"
 
 # Disable shadow in screenshots
-defaults write com.apple.screencapture disable-shadow -bool true
+# defaults write com.apple.screencapture disable-shadow -bool true
 
 # Disable screenshot thumbnail previews
 #defaults write com.apple.screencapture show-thumbnail -bool FALSE
+
+# Enable subpixel font rendering on non-Apple LCDs
+# Reference: https://github.com/kevinSuttle/macOS-Defaults/issues/17#issuecomment-266633501
+defaults write NSGlobalDomain AppleFontSmoothing -int 1
+
+# Enable HiDPI display modes (requires restart)
+sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
 
 ###############################################################################
 # Finder                                                                      #
@@ -314,6 +267,11 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 	OpenWith -bool true \
 	Privileges -bool true
 
+# Disable disk image verification
+defaults write com.apple.frameworks.diskimages skip-verify -bool true
+defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
+defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
+
 ###############################################################################
 # Dock, Dashboard, and hot corners                                            #
 ###############################################################################
@@ -390,7 +348,7 @@ defaults write com.apple.Safari HomePage -string "about:blank"
 defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
 
 # Hide Safari’s bookmarks bar by default
-defaults write com.apple.Safari ShowFavoritesBar -bool false
+# defaults write com.apple.Safari ShowFavoritesBar -bool false
 
 # Hide Safari’s sidebar in Top Sites
 defaults write com.apple.Safari ShowSidebarInTopSites -bool false
@@ -423,8 +381,8 @@ defaults write com.apple.Safari WebAutomaticSpellingCorrectionEnabled -bool fals
 
 # Disable AutoFill
 # defaults write com.apple.Safari AutoFillFromAddressBook -bool false
-# defaults write com.apple.Safari AutoFillPasswords -bool false
-# defaults write com.apple.Safari AutoFillCreditCardData -bool false
+defaults write com.apple.Safari AutoFillPasswords -bool false
+defaults write com.apple.Safari AutoFillCreditCardData -bool false
 # defaults write com.apple.Safari AutoFillMiscellaneousForms -bool false
 
 # Warn about fraudulent websites
@@ -531,8 +489,8 @@ defaults write com.apple.SoftwareUpdate AutomaticDownload -int 1
 # Install System data files & security updates
 defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
 
-# Automatically download apps purchased on other Macs
-defaults write com.apple.SoftwareUpdate ConfigDataInstall -int 1
+# # Automatically download apps purchased on other Macs
+# defaults write com.apple.SoftwareUpdate ConfigDataInstall -int 1
 
 # Turn on app auto-update
 defaults write com.apple.commerce AutoUpdate -bool true
@@ -569,27 +527,3 @@ defaults write com.google.Chrome DisablePrintPreview -bool true
 
 # Expand the print dialog by default
 defaults write com.google.Chrome PMPrintingExpandedStateForPrint2 -bool true
-
-
-###############################################################################
-# Kill affected applications                                                  #
-###############################################################################
-
-for app in "Activity Monitor" \
-	"Address Book" \
-	"Calendar" \
-	"cfprefsd" \
-	"Contacts" \
-	"Dock" \
-	"Finder" \
-	"Google Chrome" \
-	"Mail" \
-	"Messages" \
-	"Photos" \
-	"Safari" \
-	"SystemUIServer" \
-	"Terminal" \
-	"Transmission"; do
-	killall "${app}" &> /dev/null
-done
-echo "Done. Note that some of these changes require a logout/restart to take effect."
