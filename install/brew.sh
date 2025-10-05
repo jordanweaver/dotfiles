@@ -20,7 +20,6 @@ apps=(
 brew install "${apps[@]}"
 
 # Brew Cask Application Installs
-brew install homebrew/cask/brew-cask
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 casks=(
     alfred
@@ -30,11 +29,10 @@ casks=(
     keeper-password-manager
     rectangle
     spotify
-    things
     discord
     visual-studio-code
     cursor
-    font-jetbrains-mono-nerd
+    font-jetbrains-mono-nerd-font
     font-0xproto-nerd-font
     karabiner-elements
 )

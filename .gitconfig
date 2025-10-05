@@ -1,13 +1,13 @@
 [user]
-	email = i.jordanweaver@gmail.com
+	email = jordan.weaver@setpoint.io
 	name = Jordan Weaver
 [core]
-	excludesfile = /Users/jordan/.gitignore_global
-	editor = code --wait
+	excludesfile = /Users/jordanweaver/.gitignore_global
+	editor = cursor --wait
 [difftool "vscode"]
-	cmd = code --wait --diff $LOCAL $REMOTE
+	cmd = cursor --wait --diff $LOCAL $REMOTE
 [mergetool "vscode"]
-	cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
+	cmd = cursor --wait --merge $REMOTE $LOCAL $BASE $MERGED
 [alias]
     br = branch
     cp = cherry-pick
@@ -17,7 +17,7 @@
 	ss = stash save
     sl = stash list
     st = status
-    pushup = push -u origin
+    pushup = "!git push -u origin $(git rev-parse --abbrev-ref HEAD)"
 	amend = commit -a --amend --no-edit
 	cleanup = !"git branch --merged | grep -vE 'main' | xargs -n 1 git branch -D"
 	la = "!git config -l | grep alias | cut -c 7-"
@@ -37,21 +37,20 @@
     undo = reset HEAD~1 --mixed
 	changed = !"git diff --name-only $(git cbranch) $(git merge-base $(git cbranch) master)"
 	unstage = reset --
-    # cii = "!f() { \
-    #     count=$#; \
-    #     branch_name=$(git symbolic-ref --short HEAD); \
-    #     ticket_id=$(echo \"$branch_name\" | grep -oE '[^/]+$' | grep -oE '[A-Z]+-[0-9]+'); \
-    #     if [ -z \"$ticket_id\" ]; then \
-    #         ticket_id=''; \
-    #     fi; \
-    #     msg=\"$ticket_id: ${!count}\"; \
-    #     if [ $count -eq 1 ]; then \
-    #         git commit -m \"$msg\"; \
-    #     else \
-    #         set -- \"${@:1:$((count-1))}\"; \
-    #         git commit \"$@\" -m \"$msg\"; \
-    #     fi; \
-    # }; f"
+    cii = "!f() { \
+        count=$#; \
+        branch=$(git symbolic-ref --quiet --short HEAD || echo ''); \
+        ticket=$(printf '%s' \"$branch\" | grep -oE '[a-z]+-[0-9]+' | head -1 | tr '[:lower:]' '[:upper:]'); \
+        prefix=\"${ticket:+$ticket: }\"; \
+        if [ $count -eq 0 ]; then echo 'usage: git cii [commit-opts] \"message\"' >&2; return 1; fi; \
+        msg=${!count}; \
+        if [ $count -gt 1 ]; then \
+        set -- \"${@:1:$((count-1))}\"; \
+        git commit \"$@\" -m \"$prefix$msg\"; \
+        else \
+        git commit -m \"$prefix$msg\"; \
+        fi; \
+    }; f"
 [init]
 	defaultBranch = main
 [filter "lfs"]
@@ -60,3 +59,5 @@
   required = true
   clean = git-lfs clean -- %f
 
+[blame]
+	ignoreRevsFile = .git-blame-ignore-revs

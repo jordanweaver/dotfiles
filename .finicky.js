@@ -1,5 +1,5 @@
 export default {
-  defaultBrowser: "Safari",
+  defaultBrowser: "Chrome",
   options: {
     hideIcon: true
   },
@@ -21,12 +21,29 @@ export default {
       match: (url, context) => context?.keys?.option === true,
       browser: "Safari"
     },
+
+    {
+      // Open Google and Setpoint urls in Google Chrome
+      match: [
+        "*.setpoint.io/*",
+        "*.google.com/*", // match google.com subdomains
+      ],
+      browser: "Google Chrome"
+    },
+
     {
       // Open Zoom links in the Zoom app
       match: (url) =>
         url.host.includes("zoom.us") &&
         (url.pathname.startsWith("/j/") || url.hostname === "zoom.us"),
       browser: "us.zoom.xos"
+    },
+
+    {
+      // Open any link clicked in apps array in Google Chrome
+      match: ({ opener }) =>
+       ["Slack"].includes(opener.name),
+      browser: "Google Chrome"
     }
   ]
 };

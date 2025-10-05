@@ -12,13 +12,8 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd "$(dirname "${BASH_SOURCE}")";
 
 # Install Homebrew & brew-cask
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-brew tap caskroom/cask
-brew install brew-cask
-brew tap homebrew/versions
-brew tap caskroom/versions
+#/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-# Begin Installation Scripts
 for SCRIPT in "$DOTFILES_DIR"/install/*.sh; do
       [ -f "$SCRIPT" ] && . "$SCRIPT"
 done
@@ -34,7 +29,7 @@ if [ -f "$RECTANGLE_SRC" ]; then
 fi
 
 # Run macOS defaults/settings script if it exists
-if [ -f "$DOTFILES_DIR/.macos" ]; then
-    echo "Running .macos script..."
-    bash "$DOTFILES_DIR/.macos"
-fi
+# if [ -f "$DOTFILES_DIR/.macos" ]; then
+#     echo "Running .macos script..."
+#     bash "$DOTFILES_DIR/.macos"
+# fi
