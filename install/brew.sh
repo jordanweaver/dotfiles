@@ -30,7 +30,7 @@ casks=(
     rectangle
     spotify
     discord
-    visual-studio-code
+#    visual-studio-code
     cursor
     font-jetbrains-mono-nerd-font
     font-0xproto-nerd-font

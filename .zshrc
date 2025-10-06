@@ -1,4 +1,4 @@
-eval "$(brew shellenv)"
+eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(direnv hook zsh)"
 
 export PATH="$PATH:/opt/homebrew/opt/postgresql@13/bin"

@@ -12,7 +12,11 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd "$(dirname "${BASH_SOURCE}")";
 
 # Install Homebrew & brew-cask
-#/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+if ! command -v brew &>/dev/null; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 for SCRIPT in "$DOTFILES_DIR"/install/*.sh; do
       [ -f "$SCRIPT" ] && . "$SCRIPT"
@@ -28,8 +32,8 @@ if [ -f "$RECTANGLE_SRC" ]; then
     echo "Copied RectangleConfig.json to $RECTANGLE_DEST"
 fi
 
-# Run macOS defaults/settings script if it exists
-# if [ -f "$DOTFILES_DIR/.macos" ]; then
-#     echo "Running .macos script..."
-#     bash "$DOTFILES_DIR/.macos"
-# fi
+Run macOS defaults/settings script if it exists
+if [ -f "$DOTFILES_DIR/.macos" ]; then
+    echo "Running .macos script..."
+    bash "$DOTFILES_DIR/.macos"
+fi
